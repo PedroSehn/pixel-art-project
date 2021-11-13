@@ -23,7 +23,8 @@ function Editor(){
         <div id="editor"> 
             <h1>Editor de Pixel</h1>
             { hideDrawingPanel && <h2>Selecione as dimenções do painel</h2>}
-           {hideDrawingPanel && (<section id="options">
+           {hideDrawingPanel && (
+           <section id="options">
                 <div className="option">
                     <input 
                     type="number" 
@@ -42,9 +43,9 @@ function Editor(){
                     onChange={(e) => {setPanelHeight(e.target.value)} }
                     ></input>
                     <span>Altura</span>
-                </div>
-                <button className="button" onClick={initializeDrawingPanel}>{buttonText}</button>
+                </div>   
             </section>)}
+            <button className="button" onClick={initializeDrawingPanel}>{buttonText}</button>
         </div>
      )
 }
