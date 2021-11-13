@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import '../styles/Editor.css'
+import { CirclePicker } from 'react-color';
+
+
 function Editor(){
     const [panelWidth, setPanelWidth] = useState(16);
     const [panelHeight, setPanelHeight] = useState(16);
@@ -19,10 +22,15 @@ function Editor(){
         buttonText === "Começar" ? setButtonText("Reiniciar") : setButtonText("Começar")
     }
 
+
+    function changeColor(color){
+        // Seta a cor na variavel global referente a cor selecionada na grid de cores;
+        setColor(color.hex)
+    }
     return(
         <div id="editor"> 
             <h1>Editor de Pixel</h1>
-            { hideDrawingPanel && <h2>Selecione as dimenções do painel</h2>}
+            { hideDrawingPanel && <h2>Selecione as dimenções</h2>}
            {hideDrawingPanel && (
            <section id="options">
                 <div className="option">
@@ -46,6 +54,8 @@ function Editor(){
                 </div>   
             </section>)}
             <button className="button" onClick={initializeDrawingPanel}>{buttonText}</button>
+
+            {hideOptions && (<CirclePicker color={selectedColor} onChangeComplete={changeColor}/>)}
         </div>
      )
 }
