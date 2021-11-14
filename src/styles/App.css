@@ -1,4 +1,15 @@
-body{
+
+.pixel {
+    
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .row {
     display: flex;
-    justify-content: center;
-}
+    width: fit-content;
+  }
+
+  #drawing-panel{
+    width: fit-content;
+  }

@@ -53,15 +53,16 @@ function Editor(){
                     <span>Altura</span>
                 </div>   
             </section>)}
-            <button className="button" onClick={initializeDrawingPanel}>{buttonText}</button>
+            
 
             {hideOptions && (<CirclePicker color={selectedColor} onChangeComplete={changeColor}/>)}
             
-            <DrawingPanel 
+            {hideOptions && (<DrawingPanel 
             width={panelWidth}
             height={panelHeight}
             selectedColor={selectedColor}
-            />
+            />)}
+            <button className="button" onClick={initializeDrawingPanel}>{buttonText}</button>
         </div>
      )
 }
