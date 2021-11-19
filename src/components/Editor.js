@@ -11,14 +11,14 @@ function Editor(){
     const [buttonText, setButtonText] = useState("Começar");
     const [selectedColor, setColor] = useState("#f44336");
     
-    const initializeDrawingPanel = () => {
+    const initializeDrawingPanel = (e) => {
         // Quando iniciar o painel, esconde as opções, mostrar o painel e muda o texto do botão para "Reiniciar";
         // Quando iniciarmos novmente, mostra as opões, esconde o painel e muda o texto do botão para "Começar";
         // Assim, podemos reaproveitar o botão;
         
         setHideOptions(!hideOptions);
         setHideDrawingPanel(!hideDrawingPanel);
-
+        e.target.className = buttonText;
         buttonText === "Começar" ? setButtonText("Reiniciar") : setButtonText("Começar")
     }
 
@@ -29,32 +29,33 @@ function Editor(){
     }
     return(
         <div id="editor"> 
+            <header> 
             <h1>Editor de Pixel</h1>
+            </header>
             { hideDrawingPanel && <h2>Selecione as dimenções</h2>}
            {hideDrawingPanel && (
            <section id="options">
                 <div className="option">
+                    <span>Largura</span>
                     <input 
                     type="number" 
                     className="panelInput" 
                     defaultValue={panelWidth} 
                     onChange={(e) => {setPanelWidth(e.target.value)} }
                     ></input>
-                     <span>Largura</span>
                 </div>
                
                 <div className="option">
+                    <span>Altura</span>
                 <input 
                     type="number" 
                     className="panelInput" 
                     defaultValue={panelHeight}
                     onChange={(e) => {setPanelHeight(e.target.value)} }
                     ></input>
-                    <span>Altura</span>
                 </div>   
             </section>)}
             
-
             {hideOptions && (<CirclePicker color={selectedColor} onChangeComplete={changeColor}/>)}
             
             {hideOptions && (<DrawingPanel 
@@ -62,7 +63,7 @@ function Editor(){
             height={panelHeight}
             selectedColor={selectedColor}
             />)}
-            <button className="button" onClick={initializeDrawingPanel}>{buttonText}</button>
+            <button className={buttonText} onClick={initializeDrawingPanel}>{buttonText}</button>
         </div>
      )
 }
