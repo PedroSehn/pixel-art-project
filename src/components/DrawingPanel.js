@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import Row from './Row'
 import { exportComponentAsPNG } from "react-component-export-image";
+
 function DrawingPanel(props){
     const {width, height, selectedColor } = props;
     let rows = [];
@@ -10,13 +11,15 @@ function DrawingPanel(props){
     }
     
     return(
+        <>
         <div id="drawing-panel"> 
             <section ref={panelRef} id="pixels">
                 {rows}
             </section>
-            <button onClick={ () => exportComponentAsPNG(panelRef)}>Exportar PNG</button>
         </div>
+        <button conClick={ () => exportComponentAsPNG(panelRef)} className="export-button">Exportar PNG</button>
+         </>
      )
 }
 
-export default DrawingPanel;
+export default DrawingPanel;    
