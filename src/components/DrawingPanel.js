@@ -17,7 +17,7 @@ function DrawingPanel(props){
                 {rows}
             </section>
         </div>
-        <button conClick={ () => exportComponentAsPNG(panelRef)} className="export-button">Exportar PNG</button>
+        <button onClick={ () => exportComponentAsPNG(panelRef)} className="export-button">Exportar PNG</button>
          </>
      )
 }
